@@ -1,0 +1,28 @@
+{
+  "name": "crazycake",
+  "version": "1.0.0",
+  "description": "site de confeitaria",
+  "main": "App.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"teste diretorio\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PTommaselli/crazycakeExpress.git"
+  },
+  "author": "Pedro e Juliane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PTommaselli/crazycakeExpress/issues"
+  },
+  "homepage": "https://github.com/PTommaselli/crazycakeExpress#readme"
+}
