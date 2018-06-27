@@ -7,18 +7,20 @@ class bolosDAO {
         this._connection.query('select * from bolos order by id_bolos', callback);
     }
 
-    getBolo(id_bolo, callback){
-        this._connection.query('select * from bolos where id_bolo = ' + id_bolos.id_bolos, callback);
+    salvarBolo(bolo, callback){
+      console.log(bolo)
+       this._connection.query('insert into bolos set ?', bolo, callback);
     }
 
-    buscaBolo(pesquisaBolo, callback){
-        this._connection.query("select * from bolos where titulo like '%" + pesquisaBolo + "%' order by id_bolos", callback);
+    buscaBolo(pesquisa, callback){
+        console.log("modal " + pesquisa)
+        this._connection.query("select * from bolos where nome_bolos like '%" + pesquisa + "%'", callback);
     }
 
-    excluirBolo(id_bolo, callback){
-        this._connection,query('delete from bolos where id_bolos = ' + id_bolos.id_bolos, callback);
+    excluirBolo(id_bolos, callback){
+        this._connection.query('delete from bolos where id_bolos = ' + id_bolos.id_bolos, callback);
     }
-    
+
 }
 
 module.exports = () => {

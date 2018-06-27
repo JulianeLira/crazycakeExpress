@@ -5,19 +5,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CRAZYCAKE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-		 
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
+		<script type="text/javascript">
+			function Confirma(param){
+				if (confirm("Confirma a exclusao da Item?")) {
+					location.href="excluir_bolo?id_bolos=" + param;
+				}
+			}
+
+		</script>
 </head>
 <body>
 	<header>
 		<nav>
 		<div class="nav-wrapper">
-			<a href="" class="brand-logo">CRAZYCAKE</a>
+			<a href="/" class="brand-logo">CRAZYCAKE</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a href="/">HOME</a></li>
 			<li><a href="/lista_de_bolos">PRODUTOS</a></li>
@@ -28,25 +35,41 @@
 	</header>
 
 	<h1>Pedidos</h1>
+	 <a class="waves-effect waves-light btn" href="/form_add_item">Adicionar Novo Item</a>
 
+	<div class="row">
+    <div class="col s12">
+      <div class="row">
+				<form  action="/busca_bolo" method="post" class="input-field col s12">
+		        <input type="text" name="pesquisa" id="autocomplete-input" class="autocomplete">
+		        <label for="autocomplete-input">Buscar...</label>
+				</form>
+      </div>
+    </div>
+  </div>
+
+<% if(listBolos.length > 0){ %>
 	<% for(let i = 0; i < listBolos.length; i++) { %>
 		<div class="col s12 m7">
 		    <div class="card horizontal">
 		      <div class="card-image">
-		        <img src="https://lorempixel.com/100/190/nature/6">
+		        <img name="img_bolos"src="<%=listBolos[i].img_bolos %>">
 		      </div>
 		      <div class="card-stacked">
 		        <div class="card-content">
 		          	<h5><%= listBolos[i].nome_bolos%></h3>
 					<legend><%= listBolos[i].ingredientes_bolos%></legend>
 					<span>Valor: <%= listBolos[i].valor_bolos%></span>
-		        </div>
+		        </div>""
 		        <div class="card-action">
-		          <a href="#">Excluir</a>
+								<a href="#" onclick="Confirma( <%=listBolos[0].id_bolos %> )" >Excluir</a>
 		        </div>
 		      </div>
 		    </div>
 		  </div>
 		<% } %>
+<% } %>
+
+		 <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ module.exports = (app) =>{
         app.app.controllers.listBolosInController.bolo(app, req, res);
     })
 
-    app.get('/busca_bolo', (req, res) => {
+    app.post('/busca_bolo', (req, res) => {
         app.app.controllers.listBolosInController.buscaBolo(app, req, res);
     });
 

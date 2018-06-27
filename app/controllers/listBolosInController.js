@@ -1,4 +1,3 @@
-    
 
 module.exports.listaBolos = (app, req, res) => {
     const connection = app.config.BDconnection();
@@ -12,9 +11,9 @@ module.exports.listaBolos = (app, req, res) => {
 module.exports.bolo = (app, req, res) => {
     const connection = app.config.BDconnection();
     const bolosInModel = new app.app.models.bolosDAO(connection);
-    let id_bolo;
+    let id_bolos;
     if(req.query.id_bolos){
-        id_bolo = req.query;
+        id_bolos = req.query;
     }else{
         res.redirect('/lista_de_bolos');
         return;
@@ -26,27 +25,29 @@ module.exports.bolo = (app, req, res) => {
 };
 
 module.exports.buscaBolo = (app, req, res) =>{
+    const pesquisa = req.body.pesquisa;
     const connection = app.config.BDconnection();
     const bolosInModel = new app.app.models.bolosDAO(connection);
-    const pesquisaBolo = req.body.pesquisaBolo;
-
-    bolosInModel.buscaBolo(pesquisaBolo, (error, result) => {
+    bolosInModel.buscaBolo(pesquisa, (error, result) => {
+      console.log(result)
+      console.log(error)
         res.render('listBolo/listBolo', {listBolos: result});
-    })
+    });
 }
 
 module.exports.excluirBolo = (app, req, res) =>{
     const connection = app.config.BDconnection();
     const bolosInModel = new app.app.models.bolosDAO(connection);
-    let id_bolo;
-    if(req.query.id_bolo){
-        id_bolo = req.query;
+    let id_bolos;
+    if(req.query.id_bolos){
+
+        id_bolos = req.query;
     }else{
         res.redirect('/lista_de_bolos');
         return;
     }
 
-    bolosInModel.excluirBolo(id_bolo, (error, result) =>{
+    bolosInModel.excluirBolo(id_bolos, (error, result) =>{
         res.redirect('/lista_de_bolos');
     })
 }
