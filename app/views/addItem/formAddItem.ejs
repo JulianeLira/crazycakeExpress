@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CRAZYCAKE</title>
+	<link rel="stylesheet" href="styles/style-global.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -16,53 +17,58 @@
 </head>
 <body>
 	<header>
-		<nav>
+		<nav class="nav-extended">
 		<div class="nav-wrapper">
-			<a href="/" class="brand-logo">CRAZYCAKE</a>
+
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a href="/">HOME</a></li>
 			<li><a href="/lista_de_bolos">PRODUTOS</a></li>
-			<li><a href="/sobre_crazycake">SOBRE</a></li>
+			<li><a href="/form_add_item">INSERIR ITEM</a></li>
 			</ul>
+			<div class="col s12">
+					<a href="/" class="breadcrumb">CRAZYCAKE</a>
+					<a href="/form_add_item" class="breadcrumb">INSERIR ITENS</a>
+			</div>
 		</div>
+		<div id="navbar_mobile" class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="/">HOME</a></li>
+        <li class="tab"><a class="active" href="/lista_de_bolos">PRODUTOS</a></li>
+        <li class="tab"><a href="/form_add_item">INSERIR</a></li>
+      </ul>
+    </div>
 		</nav>
 	</header>
+		<% for (let i= 0; i < validacao.length ; i++) { %>
+				<div class="card-panel red">
+	        <span class="white-text"><%=validacao[i].msg %></span>
+	      </div>
+		<% } %>
 
-						<% for (let i= 0; i < validacao.length ; i++) { %>
-							<strong>Atenção!</strong>
-							<li><%=validacao[i].msg %></li>
-						<% } %>
+		<form action="/salvarBolo"  method="post" class="col s12">
+      <div id="form_inclusao" class="column card">
 
-		<form action="/salvarBolo" method="post" class="col s12">
-      <div class="row">
-
-        <div class="input-field col s6">
+        <div id="inputs" class="input-field col s6">
           <input placeholder="Nome" id="first_name" type="text" class="validate" name="nome_bolos" value="<%= bolo.nome_bolos%>">
           <label for="first_name">Nome do Item</label>
         </div>
 
-				<div class="input-field col s6">
+				<div id="inputs" class="input-field col s6">
           <input placeholder="Ingredientes" id="first_name" type="text" class="validate" name="ingredientes_bolos" value="<%= bolo.ingredientes_bolos%>">
           <label for="first_name">Ingredientes do Item</label>
         </div>
 
-				<div class="input-field col s6">
+				<div id="inputs" class="input-field col s6">
           <input placeholder="Valor" id="first_name" type="text" class="validate" name="valor_bolos" value="<%= bolo.valor_bolos%>">
           <label for="first_name">Valor do Item</label>
         </div>
 
-				<div class="input-field col s6">
-					<input type="file" class="waves-effect waves-light btn-large"  name="img_bolos" value="<%= bolo.img_bolos%>"/>
-					<a class="waves-effect waves-light btn-large">
-				</div>
-
-				<button class="btn waves-effect waves-light" type="submit">Enviar
+				<button id="inputs" class="btn waves-effect waves-light" id="btn_submit" type="submit">Enviar
 	 				<i class="material-icons right">send</i>
  				</button>
 
 			</div>
 		</form>
-
 
 
 

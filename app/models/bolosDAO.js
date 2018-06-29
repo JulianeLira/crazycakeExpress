@@ -13,7 +13,6 @@ class bolosDAO {
     }
 
     buscaBolo(pesquisa, callback){
-        console.log("modal " + pesquisa)
         this._connection.query("select * from bolos where nome_bolos like '%" + pesquisa + "%'", callback);
     }
 

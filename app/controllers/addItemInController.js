@@ -16,6 +16,7 @@ module.exports.salvarBoloForm = (app, req, res) =>{
   const bolosInModel = new app.app.models.bolosDAO(connection);
 
   bolosInModel.salvarBolo(bolo, (error, result) =>{
+    console.log(error)
     res.redirect('/lista_de_bolos');
   })
 

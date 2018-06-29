@@ -1,0 +1,80 @@
+
+body{
+  background-color: #f9f9f9;
+}
+
+#form_inclusao{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 70%;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#inputs{
+  width: 90%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+#btn_add_item{
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+#nav-wrapper{
+  width: 100%;
+}
+
+#valor_bolo{
+  font-size: 14px;
+  color: #919191;
+}
+
+#btn_add_item{
+  display: flex;
+  width: 400px;
+}
+
+.container_bolos{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+ 	justify-content: center;
+}
+
+#card_bolos{
+  display: block;
+	flex-direction: row;
+  width: 300px;
+ 	margin-left: 2px;
+ 	margin-right: 2px;
+ 	margin-bottom: 2px;
+ 	margin-top: 2px;
+}
+
+#card_busca{
+  margin-top: -7px;
+}
+
+#autocomplete-input{
+  border-bottom-color: white;
+}
+
+#navbar_mobile{
+  display: none;
+}
+
+@media screen and (max-width: 980px) {
+  #navbar_mobile{
+    display: flex;
+  }
+
+  #nav-mobile{
+    display: none;
+  }
+}

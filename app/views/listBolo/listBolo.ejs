@@ -5,11 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CRAZYCAKE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/style-global.css">
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 		<script type="text/javascript">
 			function Confirma(param){
@@ -19,57 +21,66 @@
 			}
 
 		</script>
+
+
 </head>
 <body>
 	<header>
-		<nav>
+		<nav class="nav-extended">
 		<div class="nav-wrapper">
-			<a href="/" class="brand-logo">CRAZYCAKE</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a href="/">HOME</a></li>
 			<li><a href="/lista_de_bolos">PRODUTOS</a></li>
-			<li><a href="/sobre_crazycake">SOBRE</a></li>
+			<li><a href="/form_add_item">INSERIR ITEM</a></li>
 			</ul>
+			<div class="col s12">
+				<a href="/" class="breadcrumb">CRAZYCAKE</a>
+				<a href="/lista_de_bolos" class="breadcrumb">PRODUTOS</a>
+			</div>
 		</div>
+		<div id="navbar_mobile" class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="/">HOME</a></li>
+        <li class="tab"><a class="active" href="/lista_de_bolos">PRODUTOS</a></li>
+        <li class="tab"><a href="/form_add_item">INSERIR</a></li>
+      </ul>
+    </div>
 		</nav>
 	</header>
 
-	<h1>Pedidos</h1>
-	 <a class="waves-effect waves-light btn" href="/form_add_item">Adicionar Novo Item</a>
-
-	<div class="row">
-    <div class="col s12">
-      <div class="row">
-				<form  action="/busca_bolo" method="post" class="input-field col s12">
-		        <input type="text" name="pesquisa" id="autocomplete-input" class="autocomplete">
-		        <label for="autocomplete-input">Buscar...</label>
+	<div id="card_busca" class="row">
+		<div class="col s12">
+			<div class="card row  red lighten-3">
+				<form id="form_busca" action="/busca_bolo" method="post" class="input-field col s12">
+						<input type="text" name="pesquisa" id="autocomplete-input" class="autocomplete">
+						<label class="white-text" for="autocomplete-input">Buscar...</label>
 				</form>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 
-<% if(listBolos.length > 0){ %>
+<div class="container_bolos ">
 	<% for(let i = 0; i < listBolos.length; i++) { %>
-		<div class="col s12 m7">
-		    <div class="card horizontal">
-		      <div class="card-image">
-		        <img name="img_bolos"src="<%=listBolos[i].img_bolos %>">
-		      </div>
-		      <div class="card-stacked">
-		        <div class="card-content">
-		          	<h5><%= listBolos[i].nome_bolos%></h3>
-					<legend><%= listBolos[i].ingredientes_bolos%></legend>
-					<span>Valor: <%= listBolos[i].valor_bolos%></span>
-		        </div>""
-		        <div class="card-action">
-								<a href="#" onclick="Confirma( <%=listBolos[0].id_bolos %> )" >Excluir</a>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		<% } %>
-<% } %>
+		<div class="row" >
+			<div class="col s12 m7" >
+				<div id="card_bolos" class="card" >
+					<div class="card-content">
+						<h1 class="card-title"><b><%= listBolos[i].nome_bolos%></b></h1>
+						<p><%= listBolos[i].ingredientes_bolos%></p>
+						<p id="valor_bolo" class="card-title">Valor: <%= listBolos[i].valor_bolos%></p>
+					</div>
+					<div class="card-action">
+						<a href="#" onclick="Confirma( <%=listBolos[0].id_bolos %> )">Excluir</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% } %>
+</div>
+<footer>
+	 <a id="btn_add_item" class="waves-effect waves-light btn" href="/form_add_item">Adicionar Novo Item</a>
+</footer>
 
-		 <script type="text/javascript" src="js/materialize.min.js"></script>
+
 </body>
 </html>
